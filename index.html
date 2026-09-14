@@ -334,6 +334,8 @@
   // One deliberate load-in moment for the hero — not repeated per-section
   const { animate, stagger } = Motion;
   animate('.hero-content > *', { opacity: [0, 1], y: [24, 0] }, { delay: stagger(0.12), duration: 0.7, easing: 'ease-out' });
+  // Safety net: guarantee visibility even if the animation library fails or stalls
+  setTimeout(() => document.querySelectorAll('.hero-content > *').forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; }), 2000);
 
   const nav=document.getElementById('nav');
   window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
