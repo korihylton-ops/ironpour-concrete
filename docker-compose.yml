@@ -1,0 +1,16 @@
+services:
+  site:
+    build: .
+    container_name: ironpour-concrete
+    restart: unless-stopped
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ironpour-concrete.rule=Host(`concrete.intellisystemsagency.com`)"
+      - "traefik.http.routers.ironpour-concrete.entrypoints=websecure"
+      - "traefik.http.routers.ironpour-concrete.tls.certresolver=le"
+      - "traefik.http.services.ironpour-concrete.loadbalancer.server.port=80"
+networks:
+  traefik:
+    external: true

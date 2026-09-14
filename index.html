@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ironpour Concrete | Commercial &amp; Residential Concreting, Sydney</title>
+<meta name="description" content="Ironpour Concrete — driveways, slabs, foundations and decorative concrete for Sydney homes and businesses. Licensed, insured, on time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1c2833; --navy-light:#2c3e50; --orange:#e67e22; --orange-light:#f39c12;
+    --white:#ffffff; --gray-100:#f8f9fa; --gray-300:#d0d5db; --gray-500:#8a94a1; --gray-700:#4a5563;
+    --font:'Outfit',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font);color:var(--navy);background:var(--white);line-height:1.6;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  section{padding:5rem 1.5rem;}
+  .wrap{max-width:1160px;margin:0 auto;}
+  h1,h2,h3{font-weight:800;line-height:1.1;}
+  .eyebrow{color:var(--orange);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:0.8rem;margin-bottom:0.8rem;}
+  [data-anchor]{scroll-margin-top:90px;}
+
+  /* Nav */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 1.5rem;transition:all .3s;background:transparent;}
+  .nav.scrolled{background:var(--white);box-shadow:0 2px 20px rgba(0,0,0,.08);padding:0.8rem 1.5rem;}
+  .nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+  .nav-logo{font-weight:800;font-size:1.3rem;color:var(--white);display:flex;align-items:center;gap:0.5rem;}
+  .nav.scrolled .nav-logo{color:var(--navy);}
+  .nav-logo span{color:var(--orange);}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{color:var(--white);font-weight:500;font-size:0.95rem;}
+  .nav.scrolled .nav-links a{color:var(--navy);}
+  .nav-cta{background:var(--orange);color:var(--white)!important;padding:0.7rem 1.4rem;border-radius:8px;font-weight:600;}
+  .mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .mobile-toggle span{width:26px;height:3px;background:var(--white);border-radius:2px;}
+  .nav.scrolled .mobile-toggle span{background:var(--navy);}
+  .mobile-menu{display:none;position:fixed;inset:0;background:var(--navy);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{color:var(--white);font-size:1.5rem;font-weight:600;}
+  .mobile-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--white);font-size:2rem;cursor:pointer;}
+
+  /* Hero */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;color:var(--white);overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,26,33,.65),rgba(20,26,33,.9)),url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80') center/cover;z-index:-1;}
+  .hero-inner{max-width:1160px;margin:0 auto;padding:8rem 1.5rem 3rem;width:100%;}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.5rem);margin-bottom:1.2rem;}
+  .hero h1 em{font-style:normal;color:var(--orange);}
+  .hero p{font-size:1.2rem;color:var(--gray-300);max-width:640px;margin-bottom:2rem;}
+  .btn-row{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn{padding:1rem 2rem;border-radius:8px;font-weight:700;font-size:1rem;display:inline-block;transition:transform .2s;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--orange);color:var(--white);}
+  .btn-outline{border:2px solid var(--white);color:var(--white);}
+  .hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.2);flex-wrap:wrap;}
+  .hero-stat-num{font-size:2.2rem;font-weight:800;color:var(--orange);}
+  .hero-stat-label{font-size:0.8rem;color:var(--gray-300);text-transform:uppercase;letter-spacing:1px;}
+
+  /* About */
+  .about{background:var(--gray-100);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;}
+  .about-grid img{border-radius:16px;}
+  .about h2{font-size:2.4rem;margin-bottom:1.2rem;}
+  .about p{color:var(--gray-700);margin-bottom:1rem;}
+  .feature-list{list-style:none;margin-top:1.5rem;display:grid;gap:0.8rem;}
+  .feature-list li{display:flex;gap:0.7rem;align-items:flex-start;font-weight:600;}
+  .feature-list li::before{content:'✓';background:var(--orange);color:var(--white);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;margin-top:2px;}
+
+  /* Services */
+  .section-head{text-align:center;max-width:640px;margin:0 auto 3.5rem;}
+  .section-head h2{font-size:2.4rem;}
+  .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+  .service-card{background:var(--gray-100);padding:2rem 1.5rem;border-radius:14px;border:1px solid var(--gray-300);transition:transform .2s,box-shadow .2s;}
+  .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.08);border-color:var(--orange);}
+  .service-icon{font-size:2rem;margin-bottom:1rem;}
+  .service-card h3{font-size:1.1rem;margin-bottom:0.5rem;}
+  .service-card p{color:var(--gray-700);font-size:0.9rem;}
+
+  /* Pricing */
+  .pricing{background:var(--navy);color:var(--white);}
+  .pricing .section-head h2{color:var(--white);}
+  .pricing .section-head p{color:var(--gray-300);}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+  .price-card{background:var(--navy-light);padding:2.5rem 2rem;border-radius:16px;text-align:center;border:2px solid transparent;}
+  .price-card.featured{border-color:var(--orange);position:relative;}
+  .price-tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--orange);padding:0.3rem 1rem;border-radius:20px;font-size:0.75rem;font-weight:700;text-transform:uppercase;}
+  .price-card h3{font-size:1.2rem;margin-bottom:0.5rem;}
+  .price-amount{font-size:2.5rem;font-weight:800;color:var(--orange);margin:1rem 0;}
+  .price-amount span{font-size:1rem;color:var(--gray-300);font-weight:400;}
+  .price-list{list-style:none;margin:1.5rem 0;text-align:left;display:grid;gap:0.6rem;}
+  .price-list li{font-size:0.9rem;color:var(--gray-300);}
+  .price-list li::before{content:'— ';color:var(--orange);}
+  .price-note{text-align:center;color:var(--gray-500);font-size:0.85rem;margin-top:2rem;}
+
+  /* Gallery */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+  .gallery-grid img{border-radius:12px;aspect-ratio:1;object-fit:cover;cursor:pointer;transition:transform .3s;}
+  .gallery-grid img:hover{transform:scale(1.03);}
+
+  /* FAQ */
+  .faq{background:var(--gray-100);}
+  .faq-list{max-width:800px;margin:0 auto;}
+  .faq-item{background:var(--white);border-radius:12px;margin-bottom:1rem;overflow:hidden;border:1px solid var(--gray-300);}
+  .faq-q{padding:1.3rem 1.6rem;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+  .faq-q::after{content:'+';font-size:1.5rem;color:var(--orange);transition:transform .2s;}
+  .faq-item.open .faq-q::after{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 1.6rem;}
+  .faq-item.open .faq-a{max-height:300px;padding-bottom:1.3rem;}
+  .faq-a p{color:var(--gray-700);font-size:0.95rem;}
+
+  /* CTA + contact */
+  .cta-banner{background:linear-gradient(135deg,var(--orange),var(--orange-light));text-align:center;color:var(--white);}
+  .cta-banner h2{font-size:2.2rem;margin-bottom:1rem;}
+  .cta-banner .btn-outline{border-color:var(--white);}
+
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+  .contact-card{background:var(--gray-100);padding:2rem;border-radius:14px;text-align:center;}
+  .contact-card h3{margin-bottom:0.5rem;}
+  form{display:grid;gap:1rem;}
+  input,textarea,select{width:100%;padding:0.9rem 1rem;border:1px solid var(--gray-300);border-radius:8px;font-family:var(--font);font-size:0.95rem;}
+  textarea{resize:vertical;min-height:100px;}
+  .form-btn{background:var(--orange);color:var(--white);border:none;padding:1rem;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;width:100%;}
+
+  footer{background:var(--navy);color:var(--gray-300);padding:3rem 1.5rem 1.5rem;text-align:center;font-size:0.9rem;}
+  footer a{color:var(--gray-300);}
+  .footer-links{display:flex;justify-content:center;gap:1.5rem;margin:1rem 0;flex-wrap:wrap;}
+
+  .demo-badge{position:fixed;bottom:16px;right:16px;background:var(--navy);color:var(--white);padding:0.6rem 1rem;border-radius:8px;font-size:0.75rem;z-index:150;box-shadow:0 4px 20px rgba(0,0,0,.3);}
+  .demo-badge a{color:var(--orange);font-weight:700;}
+
+  @media(max-width:900px){
+    .nav-links,.hero-stats{gap:1.2rem;}
+    .nav-links{display:none;}
+    .mobile-toggle{display:flex;}
+    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .price-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .hero h1{margin-bottom:1rem;}
+    .hero-stats{margin-top:2rem;padding-top:1.5rem;}
+    .hero-stat-num{font-size:1.5rem;}
+    .hero-stat-label{font-size:0.65rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Ironpour <span>Concrete</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">&times;</button>
+  <a href="#services">Services</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact">Get a Quote</a>
+</div>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Licensed &amp; Insured Concreting — Sydney Metro</div>
+    <h1>Concrete work that <em>lasts</em>, done <em>on schedule</em>.</h1>
+    <p>Driveways, slabs, foundations and decorative concrete for homes and businesses across Sydney. Straight quotes, no surprises, no missed dates.</p>
+    <div class="btn-row">
+      <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+      <a href="#gallery" class="btn btn-outline">View Our Work</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-num">15+</div><div class="hero-stat-label">Years Trading</div></div>
+      <div><div class="hero-stat-num">400+</div><div class="hero-stat-label">Projects Poured</div></div>
+      <div><div class="hero-stat-num">100%</div><div class="hero-stat-label">Licensed &amp; Insured</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="about" id="about" data-anchor>
+  <div class="wrap about-grid">
+    <div>
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80" alt="Concrete crew working on reinforced slab" loading="lazy">
+    </div>
+    <div>
+      <div class="eyebrow">Why Ironpour</div>
+      <h2>A crew that shows up when they say they will.</h2>
+      <p>Ironpour Concrete has been pouring driveways, slabs and foundations across Sydney for over 15 years. We run small enough to answer our own phones, big enough to handle commercial slabs on a real deadline.</p>
+      <p>Every job gets a written quote before we start and a fixed timeline — no half-finished driveways sitting for three weeks while we're off on another job.</p>
+      <ul class="feature-list">
+        <li>Fully licensed &amp; insured (Master Builders Association member)</li>
+        <li>Fixed-price quotes — no surprise add-ons</li>
+        <li>Residential &amp; commercial capacity</li>
+        <li>7-year workmanship warranty</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="services" data-anchor>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">What We Do</div>
+      <h2>Concrete services</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">🚗</div><h3>Driveways</h3><p>Plain, exposed aggregate or stamped concrete driveways built to handle daily traffic.</p></div>
+      <div class="service-card"><div class="service-icon">🏗️</div><h3>Slabs &amp; Foundations</h3><p>House slabs, shed bases and commercial foundations, engineered and council-compliant.</p></div>
+      <div class="service-card"><div class="service-icon">🎨</div><h3>Decorative Concrete</h3><p>Stamped, stencilled and coloured concrete for patios, pool surrounds and entertaining areas.</p></div>
+      <div class="service-card"><div class="service-icon">🏢</div><h3>Commercial Slabs</h3><p>Warehouse floors, carpark surfaces and commercial pads poured on a real deadline.</p></div>
+      <div class="service-card"><div class="service-icon">🧱</div><h3>Retaining Walls</h3><p>Concrete retaining and boundary walls for sloped blocks and landscaping projects.</p></div>
+      <div class="service-card"><div class="service-icon">🔨</div><h3>Concrete Repairs</h3><p>Crack repair, resurfacing and levelling for existing driveways and slabs.</p></div>
+      <div class="service-card"><div class="service-icon">🛁</div><h3>Pool Surrounds</h3><p>Slip-rated, pool-safe concrete finishes built around your existing pool shell.</p></div>
+      <div class="service-card"><div class="service-icon">📐</div><h3>Site Consultation</h3><p>Free on-site assessment and written quote before any work is scheduled.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing" data-anchor>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Indicative Pricing</div>
+      <h2>Example packages</h2>
+      <p>Every job is quoted on-site — these are typical ranges to help you budget before we visit.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>Standard Driveway</h3>
+        <div class="price-amount">$65<span>/m²</span></div>
+        <ul class="price-list">
+          <li>Plain broom-finish concrete</li>
+          <li>Up to 40m² driveway</li>
+          <li>Standard reinforcement mesh</li>
+          <li>2-day turnaround</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tag">Most Popular</div>
+        <h3>Exposed Aggregate</h3>
+        <div class="price-amount">$95<span>/m²</span></div>
+        <ul class="price-list">
+          <li>Exposed aggregate finish</li>
+          <li>Sealcoat included</li>
+          <li>Decorative border option</li>
+          <li>7-year warranty</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3>Commercial Slab</h3>
+        <div class="price-amount">POA</div>
+        <ul class="price-list">
+          <li>Engineered to spec</li>
+          <li>Council-compliant documentation</li>
+          <li>Flexible pour scheduling</li>
+          <li>Dedicated site supervisor</li>
+        </ul>
+      </div>
+    </div>
+    <p class="price-note">Prices shown are indicative examples for illustration — every quote is confirmed on-site.</p>
+  </div>
+</section>
+
+<section id="gallery" data-anchor>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Recent Work</div>
+      <h2>Gallery</h2>
+    </div>
+    <div class="gallery-grid">
+      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=500&q=75" alt="Reinforced concrete slab pour" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&q=75" alt="Concrete crew working rebar" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=500&q=75" alt="Large commercial slab site" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&q=75" alt="Reinforcement steel work" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq" data-anchor>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Questions</div>
+      <h2>Frequently Asked</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q">How long does a driveway pour take?</div><div class="faq-a"><p>Most residential driveways are poured and finished within 2 days, with a further 5-7 days curing before vehicle traffic. We'll confirm the exact schedule at quote stage.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Do you handle council permits?</div><div class="faq-a"><p>For most residential jobs, no permit is required. For larger or commercial pours we help prepare the documentation your council needs.</p></div></div>
+      <div class="faq-item"><div class="faq-q">What's included in the warranty?</div><div class="faq-a"><p>All standard residential work carries a 7-year workmanship warranty covering cracking and surface defects from installation.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Can you match an existing finish?</div><div class="faq-a"><p>Yes — bring a photo or a sample to your quote visit and we'll match the finish and colour as closely as possible.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Do you work weekends?</div><div class="faq-a"><p>Weekday pours are standard; weekend work can be arranged for commercial jobs with tight deadlines, subject to availability.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="wrap">
+    <h2>Ready to get your project quoted?</h2>
+    <p style="margin-bottom:1.5rem;">Free on-site assessment, written quote within 48 hours.</p>
+    <a href="#contact" class="btn btn-outline">Book a Free Quote</a>
+  </div>
+</section>
+
+<section id="contact" data-anchor>
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow">Get In Touch</div>
+      <h2 style="font-size:2.2rem;margin-bottom:1.5rem;">Request a quote</h2>
+      <form action="https://formsubmit.co/example@ironpourconcrete.com.au" method="POST">
+        <input type="text" name="name" placeholder="Full name" required>
+        <input type="tel" name="phone" placeholder="Phone number" required>
+        <input type="email" name="email" placeholder="Email address" required>
+        <select name="service">
+          <option value="">Select a service</option>
+          <option>Driveway</option>
+          <option>Slab / Foundation</option>
+          <option>Decorative Concrete</option>
+          <option>Commercial</option>
+          <option>Other</option>
+        </select>
+        <textarea name="details" placeholder="Tell us about your project..."></textarea>
+        <button type="submit" class="form-btn">Request Free Quote</button>
+      </form>
+    </div>
+    <div style="display:grid;gap:1.2rem;align-content:start;">
+      <div class="contact-card"><h3>📞 Phone</h3><p>(02) 5550 1234</p></div>
+      <div class="contact-card"><h3>✉️ Email</h3><p>quotes@ironpourconcrete.com.au</p></div>
+      <div class="contact-card"><h3>📍 Service Area</h3><p>Sydney Metro &amp; Greater Western Sydney</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="nav-logo" style="justify-content:center;color:var(--white);">Ironpour <span>Concrete</span></div>
+  <div class="footer-links">
+    <a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a><a href="/admin.html">Admin</a>
+  </div>
+  <p>&copy; 2026 Ironpour Concrete. Licensed &amp; Insured. ABN 00 000 000 000.</p>
+</footer>
+
+<div class="demo-badge">Example build by <a href="https://intellisystemsagency.com" target="_blank">Intellisystems</a></div>
+
+<script>
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
+  document.getElementById('mobileToggle').onclick=()=>document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('mobileClose').onclick=()=>document.getElementById('mobileMenu').classList.remove('open');
+  document.querySelectorAll('.mobile-menu a').forEach(a=>a.onclick=()=>document.getElementById('mobileMenu').classList.remove('open'));
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.querySelector('.faq-q').onclick=()=>{
+      const isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!isOpen)item.classList.add('open');
+    };
+  });
+</script>
+</body>
+</html>
